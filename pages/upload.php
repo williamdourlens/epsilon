@@ -8,7 +8,7 @@
     </head>
     <body class="text-blue-950 overflow-hidden h-screen bg-gradient-to-b from-fuchsia-400 to-fuchsia-700">
         <div class="pt-32">
-            <div class="flex flex-col items-center justify-center text-center bg-white bg-gradient-to-t from-fuchsia-400 to-transparent w-fit h-fit mx-auto px-24 rounded-xl">
+            <div class="flex flex-col items-center justify-center text-center bg-gradient-to-b from-white to-transparent w-fit h-fit mx-auto px-24 rounded-xl">
                 <h1 class="font-bold text-3xl mt-4 mb-2">EPSILON</h1>
                 <h2 class="mb-3">Plateforme de peer-learning<br>EPSI Lille</h2>
                 <form action="upload.php" method="post" enctype="multipart/form-data" class="flex flex-col items-center justify-center mt-4 mb-8">
