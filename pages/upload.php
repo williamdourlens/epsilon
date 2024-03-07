@@ -21,6 +21,9 @@
                             echo 'Aucun fichier sélectionné !'; // Afficher un message d'erreur
                         } else {
                             $dossier = '../uploads/'; // Répertoire de destination des fichiers
+                            if (!file_exists($dossier)) { // Créer le dossier s'il n'existe pas
+                                mkdir($dossier, 0777, true);
+                            }
                             $fichier = basename($_FILES['fichier']['name']); // Récupérer le nom du fichier
                             $extension = pathinfo($fichier, PATHINFO_EXTENSION); // Réupérer l'extension du fichier
                             $extensionsAutorisees = array('jpg', 'jpeg', 'png', 'gif', 'pdf'); // Extensions autorisées
