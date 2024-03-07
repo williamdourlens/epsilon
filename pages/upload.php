@@ -6,34 +6,40 @@
         <title>Epsilon - Upload</title>
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body class="text-blue-950 overflow-hidden h-screen bg-gradient-to-b from-fuchsia-400 to-fuchsia-700">
-        <div class="pt-32">
-            <div class="flex flex-col items-center justify-center text-center bg-gradient-to-b from-white to-transparent w-fit h-fit mx-auto px-24 rounded-xl">
-                <h1 class="font-bold text-3xl mt-4 mb-2">EPSILON</h1>
-                <h2 class="mb-3">Plateforme de peer-learning<br>EPSI Lille</h2>
+    <body class="text-red-700 overflow-hidden h-screen bg-gradient-to-b from-fuchsia-400 to-fuchsia-700">
+        <div class="pt-28">
+            <div class="flex flex-col items-center justify-center text-center bg-gradient-to-b from-white to-transparent w-fit h-fit mx-auto px-20 rounded-xl">
+                <?php
+                    include 'header.php'; // Inclure le header
+                ?>
                 <form action="upload.php" method="post" enctype="multipart/form-data" class="flex flex-col items-center justify-center mt-4 mb-8">
                     <input type="file" name="fichier" class="mb-4">
-                    <button type="submit" name="envoyer" class="underline text-fuchsia-900 mb-2">Envoyer</button>
+                    <button type="submit" name="envoyer" class="underline text-fuchsia-900 mb-4">Envoyer</button>
                     <?php
-                    if(isset($_POST['envoyer'])){
-                        $dossier = '../uploads/';
-                        $fichier = basename($_FILES['fichier']['name']);
-                        $imageInfo = getimagesize($_FILES['fichier']['tmp_name']);
-                        if($imageInfo !== false) {
-                            $extension = pathinfo($fichier, PATHINFO_EXTENSION);
-                            $fichierSansExtension = pathinfo($fichier, PATHINFO_FILENAME);
-                            $i = 1;
-                            while(file_exists($dossier . $fichier)){
-                                $fichier = $fichierSansExtension . '_' . $i . '.' . $extension;
-                                $i++;
-                            }
-                            if(move_uploaded_file($_FILES['fichier']['tmp_name'], $dossier . $fichier)){
-                                echo 'Upload effectué avec succès !';
-                            }else{
-                                echo 'Echec de l\'upload !';
-                            }
+                    if(isset($_POST['envoyer'])){ // Vérifier si le formulaire est envoyé
+                        if(empty($_FILES['fichier']['name'])){ // Verifier si aucun fichier n'est envoyé
+                            echo 'Aucun fichier sélectionné !'; // Afficher un message d'erreur
                         } else {
-                            echo 'Le fichier sélectionné n\'est pas une image !';
+                            $dossier = '../uploads/'; // Répertoire de destination des fichiers
+                            $fichier = basename($_FILES['fichier']['name']); // Récupérer le nom du fichier
+                            $extension = pathinfo($fichier, PATHINFO_EXTENSION); // Réupérer l'extension du fichier
+                            $extensionsAutorisees = array('jpg', 'jpeg', 'png', 'gif', 'pdf'); // Extensions autorisées
+                            $imageInfo = getimagesize($_FILES['fichier']['tmp_name']); // Récupérer les informations de l'image
+                            if(in_array($extension, $extensionsAutorisees) && ($imageInfo !== false || $extension === 'pdf')) { // Vérifier si le fichier est une image ou un PDF
+                                $fichierSansExtension = pathinfo($fichier, PATHINFO_FILENAME); // Récupérer le nom du fichier sans l'extension
+                                $i = 1;
+                                while(file_exists($dossier . $fichier)){ // Vérifier si le fichier existe déjà
+                                    $fichier = $fichierSansExtension . '_' . $i . '.' . $extension; // Renommer le fichier uploadé
+                                    $i++;
+                                }
+                                if(move_uploaded_file($_FILES['fichier']['tmp_name'], $dossier . $fichier)){ // Déplacer le fichier uploadé
+                                    echo 'Upload effectué avec succès !'; // Afficher un message de succès
+                                }else{
+                                    echo 'Echec de l\'upload !'; // Afficher un message d'erreur
+                                }
+                            } else {
+                                echo 'Le fichier sélectionné n\'est pas une image ou un PDF !'; // Afficher un message d'erreur
+                            }
                         }
                     }
                     ?>
