@@ -49,6 +49,7 @@
                                 // Déplacer le fichier uploadé
                                 if(move_uploaded_file($_FILES['fichier']['tmp_name'], $dossier . $fichier)){
                                     echo 'Upload effectué avec succès !';
+                                    header("Refresh : 2; url=upload.php"); // Empêche l'utilisateur de renvoyer le même fichier en boucle
                                 }else{
                                     echo 'Echec de l\'upload !';
                                 }
