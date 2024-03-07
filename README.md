@@ -17,3 +17,4 @@ Ne pas oublier de se placer dans le dossier et d'initier la commande `php -S loc
 - Gestion des fichiers PDF en plus des images
 - Erreur gêrée quand on envoit aucun fichier
 - Ajout du groupe sur la page principale
+- Création du dossier uploads s'il n'existe pas
