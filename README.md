@@ -20,3 +20,4 @@ Ne pas oublier de se placer dans le dossier et d'initier la commande `php -S loc
 - Création du dossier uploads s'il n'existe pas
 - Ajout de commentaires
 - Passage du fichier principal en PHP au lieu de HTML
+- Réorganisation du projet
