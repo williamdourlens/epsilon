@@ -10,12 +10,11 @@
         <div class="pt-28">
             <div class="flex flex-col items-center justify-center text-center bg-gradient-to-b from-white to-transparent w-fit h-fit mx-auto px-20 rounded-xl">
                 <?php
-                    // Inclure le header
-                    include 'pages/header.php';
+                    include 'header.php';
                 ?>
-                <img src="content/img/william.jpg" alt="William, prince de Galles" class="w-40 rounded-full">
+                <img src="william.jpg" alt="William, prince de Galles" class="w-40 rounded-full">
                 <p class="my-4">William DOURLENS<br>Groupe : Vianney DRS, Téo Fiminski</p>
-                <a href="pages/upload.php"><p class="mb-4 underline text-fuchsia-900">Upload your file !</p></a>
+                <a href="upload.php"><p class="mb-4 underline text-fuchsia-900">Upload your file !</p></a>
                 <p class="mb-8">Copyright © Epsi Lille 2024</p>
             </div>
         </div>
