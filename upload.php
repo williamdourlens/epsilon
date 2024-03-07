@@ -23,7 +23,7 @@
                         if(empty($_FILES['fichier']['name'])){
                             echo 'Aucun fichier sélectionné !';
                         } else {
-                            $dossier = '../uploads/';
+                            $dossier = 'uploads/';
 
                             // Créer le dossier s'il n'existe pas
                             if (!file_exists($dossier)) {
