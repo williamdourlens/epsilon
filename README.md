@@ -1,6 +1,6 @@
 # Epsilon
 
-Site web permettant d'upload des images dans le dossier uploads.
+Site web permettant d'upload des images dans un dossier uploads.
 
 
 ## À savoir
